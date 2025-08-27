@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Карусель промо -->
+<div id="promoCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for item in carousel_items %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <a href="{{ item.link }}">
+          {% if item.image_url %}
+            <img src="{{ item.image_url }}" class="d-block w-100 carousel-img" alt="{{ item.promo_name }}">
+          {% else %}
+            <div class="d-flex justify-content-center align-items-center w-100" style="height:350px; background-color:#f8f9fa;">
+              <h3>{{ item.promo_name }}</h3>
+            </div>
+          {% endif %}
+          <!-- Адаптивная подпись -->
+          <div class="carousel-caption text-center">
+            <h5 class="d-block d-md-none small">{{ item.promo_name }}</h5> <!-- мобильная версия -->
+            <h5 class="d-none d-md-block">{{ item.promo_name }}</h5>       <!-- десктоп -->
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#promoCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Предыдущий</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#promoCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Следующий</span>
+  </button>
+</div>
+
+<!-- Новые товары -->
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for product in new_products %}
+    <div class="col">
+      <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
+        <div class="card product-card h-100">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+          {% endif %}
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text flex-grow-1">Цена от {{ product.price }} ₽</p>
+            <span class="btn btn-outline-primary mt-auto">Подробнее</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

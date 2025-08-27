@@ -1,0 +1,19 @@
+# Virtual environment
+.venv
+venv/
+.env
+/env
+
+# Pycache
+
+.pic
+__pycache__/
+
+# Django
+*pio
+*.py~
+
+# IDE
+.idea/
+
+
