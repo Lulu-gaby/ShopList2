@@ -4,7 +4,7 @@ from .forms import ProductForm
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    form = ProductForm  # <-- используем форму с shop_addresses_raw
+    form = ProductForm
     list_display = (
         "name",
         "category",

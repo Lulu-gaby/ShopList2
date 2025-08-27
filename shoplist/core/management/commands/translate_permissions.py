@@ -31,7 +31,7 @@ class Command(BaseCommand):
             'change_logentry': 'Может изменять запись журнала',
             'delete_logentry': 'Может удалять запись журнала',
             'view_logentry': 'Может просматривать запись журнала',
-            # Session permissions (обычно нет в стандартном наборе, но для совместимости)
+            # Session permissions
             'add_session': 'Может добавлять сессию',
             'change_session': 'Может изменять сессию',
             'delete_session': 'Может удалять сессию',
